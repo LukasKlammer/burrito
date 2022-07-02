@@ -26,7 +26,30 @@
         </div>
     </header>
     <main>
-        Hier kommt der content rein
+        <div class="restaurant-container">
+            <div class="restaurant-header">
+                <img class="meal-image" src="img/pizza.jpg" alt="">
+                <img class="restaurant-logo" restaurant-logo src="img/pizza_burrito_logo.png" alt="">
+            </div>
+            <div class="dishes-container">
+                <h2>Pizza Burrito</h2>
+                <h3 class="dishes-undertitle">Unsere besten Pizzen</h3>
+                <div onclick="addToBasket(0)" id="dishes-container">
+                    <div class="dish">
+                        <h4>Pizza Burrito</h4>
+                        <p>mit Mozzarella Bufala</p>
+                        <span class="dish-price">6,70 €</span>
+                        <img src="img/add.png" class="add-icon" alt="addToBasket">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="basket">
+            <h3>Warenkorb</h3>
+            <div id="basket-container">
+                Hier rendern wir den Basket rein
+            </div>
+        </div>
     </main>
     <footer>
         <a href="#">Impressum</a>

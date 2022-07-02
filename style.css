@@ -7,6 +7,11 @@ body {
     min-height: 100vh;
 }
 
+h4 {
+    margin: 0;
+    padding: 0;
+}
+
 /* header styles */
 header {
     display: flex;
@@ -48,7 +53,84 @@ header {
 
 /* main styles */
 main {
+    display: flex;
     flex: 1;
+}
+
+.restaurant-container {
+    flex: 1;
+}
+
+.restaurant-header {
+    width: 100%;
+    position: relative;
+}
+
+.meal-image {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    object-position: 50% 28%
+}
+
+.restaurant-logo {
+    width: 90px;
+    height: 90px;
+    border: 1px solid #E6E6E6;
+    border-radius: 50%;
+    background-color: white;
+    padding: 15px;
+    position: absolute;
+    bottom: -60px;
+    left: calc(50% - 60px);
+}
+
+.restaurant-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #0A3847;
+}
+
+.dishes-container {
+    width: 1000px;
+}
+
+.dishes-undertitle {
+    padding: 12px;
+    background-color: #F8F5F2;
+}
+
+.dish {
+    border: 1px solid #E6E6E6;
+    padding: 24px;
+    position: relative;
+    cursor: pointer;
+    transition: all 125ms ease-in-out;
+}
+
+.dish:hover {
+    border: 1px solid #146EEB;
+}
+
+.dish-price {
+    color: #FB6100;
+}
+
+.add-icon {
+    padding: 8px;
+    width: 24px;
+    height: 24px;
+    border-left: 1px solid #E6E6E6;
+    border-bottom: 1px solid #E6E6E6;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.basket {
+    width: 300px;
 }
 
 /* footer styles */
