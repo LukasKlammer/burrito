@@ -102,7 +102,22 @@ main {
     background-color: #F8F5F2;
 }
 
+#dishes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 12px;
+}
+
+.loading-image {
+    width: 36px;
+    height: 36px;
+}
+
 .dish {
+    width: 100%;
+    box-sizing: border-box;
     border: 1px solid #E6E6E6;
     padding: 24px;
     position: relative;
@@ -130,7 +145,76 @@ main {
 }
 
 .basket {
-    width: 300px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left: 2px solid #ECECEE;
+}
+
+.basket-header {
+    border-bottom: 1px solid #EBEBEB;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    padding: 18px;
+    margin: 0;
+}
+
+#basket-container {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px;
+}
+
+.basket-image {
+    width: 40px;
+    padding: 18px;
+}
+
+.basket-element {
+    width: 100%;
+    padding: 12px 0px;
+    border-bottom: 1px solid #E6E6E6;
+}
+
+.amount-name-price {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.increase-decrease {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.note-increase-decrease a {
+    text-decoration: none;
+    color: #125FCA;
+    transition: all 125ms ease-in-out;
+}
+
+.note-increase-decrease a:hover {
+    text-decoration: underline;
+}
+
+.increase-decrease-icon {
+    padding: 8px;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #E6E6E6;
+    cursor: pointer;
+}
+
+.increase-decrease-icon:hover {
+    border: 1px solid #146EEB;
 }
 
 /* footer styles */
