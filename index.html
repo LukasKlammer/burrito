@@ -9,6 +9,7 @@
     <link rel="icon" type="image/x-icon" href="img/pizzerando_logo.png">
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
+    <script src="templates.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -16,7 +17,7 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body onload="init()">
     <header>
         <img class="header-logo" src="img/pizzerando.png" alt="">
         <a class="header-location" href="#">Dantestraße 12, 39031 Bruneck - Italy</a>
@@ -34,12 +35,14 @@
             <div class="dishes-container">
                 <h2>Pizza Burrito</h2>
                 <h3 class="dishes-undertitle">Unsere besten Pizzen</h3>
-                <div onclick="addToBasket(0)" id="dishes-container">
-                    <div class="dish">
-                        <h4>Pizza Burrito</h4>
-                        <p>mit Mozzarella Bufala</p>
-                        <span class="dish-price">6,70 €</span>
-                        <img src="img/add.png" class="add-icon" alt="addToBasket">
+                <div id="dishes">
+                    <div onclick="addToBasket(0)">
+                        <div class="dish">
+                            <h4>Pizza Burrito</h4>
+                            <p>mit Mozzarella Bufala</p>
+                            <span class="dish-price">6,70 €</span>
+                            <img src="img/add.png" class="add-icon" alt="addToBasket">
+                        </div>
                     </div>
                 </div>
             </div>
