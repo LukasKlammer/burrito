@@ -52,6 +52,7 @@ function renderBasketCosts(basketContainer) {
         basketGrandTotal = basketGrandTotal * 0.9; // 10 % discount
     }
     basketContainer.innerHTML += templateBasketPrices(basketSubTotal, deliveryCosts, basketGrandTotal);
+    document.getElementById('open-basket-button').innerHTML = `Warenkorb (${basketGrandTotal.toFixed(2).replace(".", ",")} €)`;
 }
 
 function calculateBasketSubTotal() {
@@ -124,4 +125,14 @@ function findIndex(array, name) {
 
 function pay() {
     alert('Vielen Dank für Ihre Bestellung. Sie ist auf dem Weg zu Ihnen.');
+}
+
+function openBasket() {
+    document.getElementById('restaurant-container').classList.add('d-none');
+    document.getElementById('basket').style.display = "block";
+}
+
+function closeBasket() {
+    document.getElementById('restaurant-container').classList.remove('d-none');
+    document.getElementById('basket').style.display = "none";
 }

@@ -24,14 +24,14 @@
 <body onload="init()">
     <header>
         <img class="header-logo" src="img/pizzerando.png" alt="">
-        <a class="header-location" href="#">Dantestraße 12, 39031 Bruneck - Italy</a>
+        <a class="header-location mobile-d-none" href="#">Dantestraße 12, 39031 Bruneck - Italy</a>
         <div>
             <img class="language-icon" src="img/Flag_of_Germany.png" alt="">
             <img class="menu-icon" src="img/hamburger_menu_white.png" alt="">
         </div>
     </header>
     <main>
-        <div class="restaurant-container">
+        <div class="restaurant-container" id="restaurant-container">
             <div class="restaurant-header">
                 <img class="meal-image" src="img/pizza.jpg" alt="">
                 <img class="restaurant-logo" restaurant-logo src="img/pizza_burrito_logo.png" alt="">
@@ -43,11 +43,17 @@
                     <img class="loading-image" src="img/loading.png" alt="">
                 </div>
             </div>
+            <button class="btn btn-primary btn-open-basket" id="open-basket-button" onclick="openBasket()">Warenkorb (xxxx €)</button>
         </div>
-        <div class="basket">
-            <h3 class="basket-header">Warenkorb</h3>
-            <div id="basket-container">
-                <img class="loading-image" src="img/loading.png" alt="">
+        <div class="basket" id="basket">
+            <div class="sticky-basket-content">
+                <div class="basket-header-close">
+                    <h3 class="basket-header">Warenkorb</h3>
+                    <button type="button" onclick="closeBasket()" class="btn-close show-mobile" aria-label="Close"></button>
+                </div>
+                <div id="basket-container">
+                    <img class="loading-image" src="img/loading.png" alt="">
+                </div>
             </div>
         </div>
     </main>

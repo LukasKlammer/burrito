@@ -75,15 +75,15 @@ main {
 }
 
 .restaurant-logo {
-    width: 90px;
-    height: 90px;
+    width: 110px;
+    height: 110px;
     border: 1px solid #E6E6E6;
     border-radius: 50%;
     background-color: white;
     padding: 15px;
     position: absolute;
-    bottom: -60px;
-    left: calc(50% - 60px);
+    bottom: -55px;
+    left: calc(50% - 55px);
 }
 
 .restaurant-container {
@@ -94,7 +94,7 @@ main {
 }
 
 .dishes-container {
-    width: 1000px;
+    width: 900px;
 }
 
 .restaurant-headline {
@@ -103,6 +103,7 @@ main {
 
 .restaurant-undertitle {
     padding: 12px;
+    margin-bottom: 18px;
     background-color: #F8F5F2;
 }
 
@@ -154,6 +155,22 @@ main {
     flex-direction: column;
     align-items: center;
     border-left: 2px solid #ECECEE;
+}
+
+.sticky-basket-content {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+
+.basket-header-close {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-close {
+    padding: 16px !important;
 }
 
 .basket-header {
@@ -236,6 +253,14 @@ main {
     justify-content: space-between;
 }
 
+.btn-open-basket {
+    position: sticky;
+    width: 250px;
+    bottom: 0px;
+    margin-bottom: 12px;
+    display: none !important;
+}
+
 /* footer styles */
 footer {
     display: flex;
@@ -254,4 +279,57 @@ footer a:hover {
     text-decoration: none;
     color: white;
     border-bottom: 1px solid white;
+}
+
+.d-none {
+    display: none;
+}
+
+.show-mobile {
+    display: none;
+}
+
+@media (max-width: 1300px) {
+    .dishes-container {
+        width: 100%;
+        padding: 0 20px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 1000px) {
+    .restaurant-headline {
+        text-align: center;
+        padding-top: 70px;
+    }
+
+    .restaurant-undertitle {
+        text-align: center;
+    }
+}
+
+@media (max-width: 800px) {
+    .basket {
+        width: 250px;
+    }
+}
+
+@media (max-width: 600px) {
+    .btn-open-basket {
+        display: block !important;
+    }
+
+    .basket {
+        display: none;
+        width: 100%;
+    }
+
+    .mobile-d-none {
+        display: none;
+    }
+
+    .show-mobile {
+        display: block;
+    }
 }
