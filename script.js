@@ -13,6 +13,7 @@ let basketElements = [
 let hasdiscount = false;
 
 function init() {
+    reactAtWindowSizes();
     renderDishes();
     renderBasket();
 }
@@ -129,10 +130,28 @@ function pay() {
 
 function openBasket() {
     document.getElementById('restaurant-container').classList.add('d-none');
-    document.getElementById('basket').style.display = "block";
+    document.getElementById('basket').classList.remove('d-none');
 }
 
 function closeBasket() {
     document.getElementById('restaurant-container').classList.remove('d-none');
-    document.getElementById('basket').style.display = "none";
+    document.getElementById('basket').classList.add('d-none');
+}
+
+window.addEventListener('resize', function(event) {
+    reactAtWindowSizes();
+}, true);
+
+
+function reactAtWindowSizes() {
+    if (window.innerWidth < 600) {
+        console.log('mobile-Ansicht')
+        document.getElementById('restaurant-container').classList.remove('d-none');
+        document.getElementById('basket').classList.add('d-none');
+
+    } else if (window.innerWidth >= 600) {
+        console.log('desktop-Ansicht')
+        document.getElementById('restaurant-container').classList.remove('d-none');
+        document.getElementById('basket').classList.remove('d-none');
+    }
 }
