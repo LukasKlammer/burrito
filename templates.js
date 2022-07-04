@@ -40,3 +40,28 @@ function templateBasket(basketElement) {
         </div>
     `;
 }
+
+function templateBasketPrices() {
+    return /*html*/ `
+    <div class="basket-prices">
+        <div class="basket-prices-row">
+            <span>Zwischensumme</span>
+            <span>12,33 €</span>
+        </div>
+        <div class="basket-prices-row">
+            <span>Lieferkosten</span>
+            <span>kostenlos</span>
+        </div>
+        <div class="basket-prices-row">
+            <input class="form-control" type="text" placeholder="Gib deinen Rabattcode ein.">
+        </div>
+        <div class="basket-prices-row">
+            <span><b>Gesamt</b></span>
+            <span><b>12,33 €</b></span>
+        </div>
+        <button onclick="pay()" class="btn btn-primary">
+            Bezahlen ()
+        </button>
+    </div>
+`;
+}

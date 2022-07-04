@@ -217,6 +217,22 @@ main {
     border: 1px solid #146EEB;
 }
 
+.basket-prices {
+    padding-top: 24px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.basket-prices-row {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 /* footer styles */
 footer {
     display: flex;

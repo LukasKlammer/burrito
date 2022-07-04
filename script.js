@@ -1,44 +1,13 @@
 let dishes = [
-    {
-        name: 'Pizza Burrito',
-        description: 'mit Mozzarella Bufala',
-        price: 8.50
-    },
-    {
-        name: 'Pizza Mozzarella',
-        description: 'mit Mozzarella aus original Südtiroler Heumilch',
-        price: 7.20
-    },
-    {
-        name: 'Pizza Fitness',
-        description: 'mit frischem Gemüse aus biologischem Anbau',
-        price: 9.10
-    },
-    {
-        name: 'Pizza Salute',
-        description: 'mit leckerem Brokkoli und Stracchino',
-        price: 9.30
-    },
-    {
-        name: 'Pizza Gustosa',
-        description: 'mit Oliven aus Süditalien',
-        price: 8.70
-    },
+    new Dish('Pizza Burrito', 'mit Mozzarella Bufala', 8.50),
+    new Dish('Pizza Mozzarella', 'mit Mozzarella aus original Südtiroler Heumilch', 7.20),
+    new Dish('Pizza Fitness', 'mit frischem Gemüse aus biologischem Anbau', 9.10),
+    new Dish('Pizza Salute', 'mit leckerem Brokkoli und Stracchino', 9.30),
+    new Dish('Pizza Gustosa', 'mit Oliven aus Süditalien', 8.70),
 ];
 
 let basketElements = [
-    {
-        name: 'Pizza Fitness',
-        description: 'mit frischem Gemüse aus biologischem Anbau',
-        price: 9.10,
-        amount: 3
-    },
-    {
-        name: 'Pizza Salute',
-        description: 'mit leckerem Brokkoli und Stracchino',
-        price: 9.30,
-        amount: 5
-    }
+    new BasketElement('Pizza Fitness', 'mit frischem Gemüse aus biologischem Anbau', 9.10),
 ];
 
 function init() {
@@ -70,6 +39,7 @@ function renderBasketContent(basketContainer) {
         const basketElement = basketElements[i];
         basketContainer.innerHTML += templateBasket(basketElement);
     }
+    basketContainer.innerHTML += templateBasketPrices();
 }
 
 /**
@@ -77,25 +47,45 @@ function renderBasketContent(basketContainer) {
  * @param {string} name expects the name of the dish. Name must be unique
  */
 function addToBasket(name) {
-    if (basketElements.find((item) => item.name === name)) {
-        console.log('Element bereits vorhanden');
-    } else {
-        console.log('Element muss noch richtig hinzugefügt werden... Problem amount');
-        // basketElements.push(findDish(name));
-        // console.log(basketElements);
+    let elementInBasket = findElement(basketElements, name); // searches, if element is already in basket
+    if (elementInBasket) {
+        elementInBasket.amount++;
+    } else { // dish not in basket --> search dish by name and add it to basket
+        const dishToAdd = findElement(dishes, name);
+        basketElements.push(new BasketElement(dishToAdd.name, dishToAdd.description, dishToAdd.price));
     }
     renderBasket();
 }
 
 function increaseQuantity(name) {
-    console.log('Warenkorb erhöhen vom Element ', name);
+    let elementInBasket = findElement(basketElements, name);
+    elementInBasket.amount++;
+    renderBasket();
 }
 
+/**
+ * function decreases the amount of a product in basket or removes it, if it's the last remaining element
+ * @param {string} name expects the name of the dish. Name must be unique
+ */
 function decreaseQuantity(name) {
-    console.log('Warenkorb verringern vom Element ', name);
+    let elementInBasket = findElement(basketElements, name);
+    if (elementInBasket.amount > 1) { // decrease amount only if amount is higher than 1
+        elementInBasket.amount--;
+    } else { // remove element from basket, when only 1 element remaining
+        let indexToRemove = findIndex(basketElements, name);
+        basketElements.splice(indexToRemove, 1);
+    }
+    renderBasket();
 }
 
-function findDish(name) {
-    const dish = dishes.find((dish) => dish.name === name);
-    return dish;
+function findElement(array, name) {
+    return array.find((item) => item.name === name)
+}
+
+function findIndex(array, name) {
+    return array.findIndex(element => element.name === name)
+}
+
+function pay() {
+    alert('Vielen Dank für Ihre Bestellung. Sie ist auf dem Weg zu Ihnen.');
 }
