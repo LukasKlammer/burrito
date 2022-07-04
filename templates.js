@@ -25,13 +25,12 @@ function templateBasketEmpty() {
 
 function templateBasket(basketElement) {
     const sum = basketElement['price'] * basketElement['amount'];
-    const sumWithKomma = sum.toFixed(2).replace(".", ",");
     return /*html*/ `
         <div class="basket-element">
             <div class="amount-name-price">
                 <span>${basketElement['amount']}</span>
                 <span>${basketElement['name']}</span>
-                <span>${sumWithKomma} €</span>
+                <span>${sum.toFixed(2).replace(".", ",")} €</span>
             </div>
             <div class="increase-decrease">
                 <img onclick="increaseQuantity('${basketElement['name']}')" class="increase-decrease-icon" src="img/add.png" alt="add-icon">
@@ -41,26 +40,26 @@ function templateBasket(basketElement) {
     `;
 }
 
-function templateBasketPrices() {
+function templateBasketPrices(basketSubTotal, deliveryCosts, basketGrandTotal) {
     return /*html*/ `
     <div class="basket-prices">
         <div class="basket-prices-row">
             <span>Zwischensumme</span>
-            <span>12,33 €</span>
+            <span>${basketSubTotal.toFixed(2).replace(".", ",")} €</span>
         </div>
         <div class="basket-prices-row">
             <span>Lieferkosten</span>
-            <span>kostenlos</span>
+            <span>${deliveryCosts}</span>
         </div>
         <div class="basket-prices-row">
-            <input class="form-control" type="text" placeholder="Gib deinen Rabattcode ein.">
+            <input class="form-control" onkeyup="checkDiscount()" id="discount-code" type="text" placeholder="Gib deinen Rabattcode ein.">
         </div>
         <div class="basket-prices-row">
             <span><b>Gesamt</b></span>
-            <span><b>12,33 €</b></span>
+            <span><b>${basketGrandTotal.toFixed(2).replace(".", ",")} €</b></span>
         </div>
         <button onclick="pay()" class="btn btn-primary">
-            Bezahlen ()
+            Bezahlen (${basketGrandTotal.toFixed(2).replace(".", ",")} €)
         </button>
     </div>
 `;

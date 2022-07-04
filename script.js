@@ -10,6 +10,8 @@ let basketElements = [
     new BasketElement('Pizza Fitness', 'mit frischem Gemüse aus biologischem Anbau', 9.10),
 ];
 
+let hasdiscount = false;
+
 function init() {
     renderDishes();
     renderBasket();
@@ -31,6 +33,7 @@ function renderBasket() {
         basketContainer.innerHTML = templateBasketEmpty()
     } else {
         renderBasketContent(basketContainer);
+        renderBasketCosts(basketContainer);
     }
 }
 
@@ -39,7 +42,40 @@ function renderBasketContent(basketContainer) {
         const basketElement = basketElements[i];
         basketContainer.innerHTML += templateBasket(basketElement);
     }
-    basketContainer.innerHTML += templateBasketPrices();
+}
+
+function renderBasketCosts(basketContainer) {
+    let basketSubTotal = calculateBasketSubTotal();
+    const deliveryCosts = 'kostenlos';
+    let basketGrandTotal = basketSubTotal + 0; // 0 € delivery costs
+    if (hasdiscount) { // if user entered the right discount key
+        basketGrandTotal = basketGrandTotal * 0.9; // 10 % discount
+    }
+    basketContainer.innerHTML += templateBasketPrices(basketSubTotal, deliveryCosts, basketGrandTotal);
+}
+
+function calculateBasketSubTotal() {
+    let basketSubTotal = 0;
+    for (let i = 0; i < basketElements.length; i++) {
+        const basketElement = basketElements[i];
+        const itemSum = basketElement['amount'] * basketElement['price'];
+        basketSubTotal = basketSubTotal + itemSum; 
+    }
+    return basketSubTotal;
+}
+
+/**
+ * checks, if user is authorized to have 10 % discount
+ * IMPORTANT: this is frontend code, so it's important to know that it could be modified by user
+ * usually the discount-code check has to be done on backend
+ */
+function checkDiscount() {
+    let inputField = document.getElementById('discount-code');
+    if (inputField.value == 'bestmeals') {
+        alert('Super! Du erhältst 10 % Rabatt!');
+        hasdiscount = true;
+        renderBasket();
+    }
 }
 
 /**

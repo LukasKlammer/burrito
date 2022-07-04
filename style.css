@@ -97,7 +97,11 @@ main {
     width: 1000px;
 }
 
-.dishes-undertitle {
+.restaurant-headline {
+    padding: 20px 0px;
+}
+
+.restaurant-undertitle {
     padding: 12px;
     background-color: #F8F5F2;
 }
@@ -135,8 +139,8 @@ main {
 
 .add-icon {
     padding: 8px;
-    width: 24px;
-    height: 24px;
+    width: 40px;
+    height: 40px;
     border-left: 1px solid #E6E6E6;
     border-bottom: 1px solid #E6E6E6;
     position: absolute;
@@ -171,7 +175,6 @@ main {
 }
 
 .basket-image {
-    width: 40px;
     padding: 18px;
 }
 
@@ -207,8 +210,8 @@ main {
 
 .increase-decrease-icon {
     padding: 8px;
-    width: 18px;
-    height: 18px;
+    width: 32px;
+    height: 32px;
     border: 1px solid #E6E6E6;
     cursor: pointer;
 }
