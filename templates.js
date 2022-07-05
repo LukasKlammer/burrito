@@ -1,14 +1,14 @@
 /**
  * 
- * @param {object} dish this object excpects a dish object with all informations about single dish
+ * @param {object} product this object excpects a dish object with all informations about single dish
  * @returns html template with variable content
  */
-function templateDish(dish) {
-    const priceWithKomma = dish['price'].toFixed(2).replace(".", ",");
+function templateDish(product) {
+    const priceWithKomma = product['price'].toFixed(2).replace(".", ",");
     return /*html*/ `
-    <div onclick="addToBasket('${dish['name']}')" class="dish">
-        <h4>${dish['name']}</h4>
-        <p>${dish['description']}</p>
+    <div onclick="addToBasket('${product['name']}')" class="dish">
+        <h4>${product['name']}</h4>
+        <p>${product['description']}</p>
         <span class="dish-price">${priceWithKomma} €</span>
         <img src="img/add.png" class="add-icon" alt="addToBasket">
     </div>
@@ -33,14 +33,14 @@ function templateBasket(basketElement) {
                 <span>${sum.toFixed(2).replace(".", ",")} €</span>
             </div>
             <div class="increase-decrease">
-                <img onclick="increaseQuantity('${basketElement['name']}')" class="increase-decrease-icon" src="img/add.png" alt="add-icon">
-                <img onclick="decreaseQuantity('${basketElement['name']}')" class="increase-decrease-icon" src="img/remove.png" alt="remove-icon">
+                <img onclick="basket.increaseQuantity('${basketElement['name']}')" class="increase-decrease-icon" src="img/add.png" alt="add-icon">
+                <img onclick="basket.decreaseQuantity('${basketElement['name']}')" class="increase-decrease-icon" src="img/remove.png" alt="remove-icon">
             </div>
         </div>
     `;
 }
 
-function templateBasketPrices(basketSubTotal, deliveryCosts, basketGrandTotal) {
+function templateBasketPrices(basketSubTotal, deliveryCosts, basketGrandTotal, discountMessage) {
     return /*html*/ `
     <div class="basket-prices">
         <div class="basket-prices-row">
@@ -54,6 +54,7 @@ function templateBasketPrices(basketSubTotal, deliveryCosts, basketGrandTotal) {
         <div class="basket-prices-row">
             <input class="form-control" onkeyup="checkDiscount()" id="discount-code" type="text" placeholder="Gib deinen Rabattcode ein.">
         </div>
+        <span>${discountMessage}</span>
         <div class="basket-prices-row">
             <span><b>Gesamt</b></span>
             <span><b>${basketGrandTotal.toFixed(2).replace(".", ",")} €</b></span>
